@@ -1,0 +1,176 @@
+//Example bot personality
+
+//Do not let this file exceed 131072 bytes.
+
+//Do not let any group exceed 8192 bytes.
+
+//Do not let the chat section exceed 8192 bytes.
+
+//Some values are base values and changed by the in-game skill. The formula for reflex and accuracy
+//is basevalue/skill. So if you give a base reflex of 500ms, a nightmare bot will have a reaction time of
+//100ms. Other values, like turnspeed_combat (higher == faster), are multiplied by the skill number.
+
+//Note also that depending on if the bot and the enemy are moving at the same time, the degrees the bot
+//aims off by can be greater than the maximum accuracy value. So if the bot and its enemy are both flying
+//through the air and accuracy is at 20, the bot could easily aim off by 25 degrees instead. That is,
+//unless perfectaim is 1. In this case the bot will aim perfectly at all times (as the name indicates).
+
+GeneralBotInfo
+{
+	reflex			500
+				//base reflex value, time in ms it takes the bot to react
+	accuracy		10
+				//base accuracy, number of degrees bot can aim off by. Lower value == better aim.
+	turnspeed		0.01
+				//turn speed while navigating.. the higher it is, the faster.
+	turnspeed_combat	0.05
+				//turn speed while in a combat situation. Same as above.
+	maxturn			360
+				//make number of degrees that the bot can conceivably turn in a single frame.
+	perfectaim		0
+				//Set to 1 for perfect aiming.
+	chatability		1
+				//1 if the bot can chat, 0 if not.
+	chatfrequency		3
+				//Should be 0-10. 10 is talk every event, 1 is talk one out of 1 times (random).
+	hatelevel		3
+				//For the bot to "hate" an enemy, that enemy has to do undesireable things this many
+				//times in a row. For example, here if an enemy kills Kyle (who we are attached to)
+				//3 times, we will "hate" them and go after that enemy specifically, seeking revenge.
+	camper			1
+				//If 1, the bot can camp over desireable areas. If 0, the bot will not camp.
+	saberspecialist		1
+				//if 1, bot will not run just because it's forced to use a saber
+
+	//Force power settings. Read the strings below the numbers vertically to see what each number controls.
+	//don't exceed 20 force points total
+	forceinfo		20-1-333003000000000333
+	//			     hlspptglrpattdssss
+	//			     eepuueriarbeereaaa
+	//			     aveslliggosaaaebbb
+	//			     l ehlephetommi eee
+	//			       d    t erhfn rrr
+	//			            n cbeo  adt
+	//			            i t ar  teh
+	//			            n   lc  tfr
+	//			            g    e  aeo
+	//			                    cnw
+	//			                    kd
+
+	//rank-side-heal.lev.speed.push.pull.tele.grip.lightning.rage.protect.absorb.teamheal.teamforce.drain.see.saberattack.saberdefend.saberthrow
+	//1==light side 2==dark side
+}
+
+//Weapons with a weight of 0 will be used in special cases outside of combat
+//The higher the weapon weight, the more desireable the weapon will be to the bot.
+BotWeaponWeights
+{
+	WP_STUN_BATON		1
+	WP_SABER		20
+	WP_BRYAR_PISTOL		11
+	WP_BLASTER		12
+	WP_DISRUPTOR		13
+	WP_BOWCASTER		14
+	WP_REPEATER		15
+	WP_DEMP2		16
+	WP_FLECHETTE		17
+	WP_ROCKET_LAUNCHER	18
+	WP_THERMAL		14
+	WP_TRIP_MINE		0
+	WP_DET_PACK		0
+}
+
+//This bot will protect and defend any other bots that have their name in this list.
+//An attachment level of 1 means this will only matter in teamplay modes if the bot
+//is on the same team. If the level is 2 the bots won't harm each other even on straight
+//DM and will attempt to get revenge on anyone who harms their beloved one.
+
+//There is a limit of 4 emotional attachments per bot.
+//Be sure to seperate the name and attachment level by tab characters.
+
+EmotionalAttachments
+{
+	Kyle			2
+}
+
+//all groups below here will be read in as chat sections
+//A rundown of each section:
+
+//Died - This bot ("Example") was killed by another bot.
+
+//Killed - This bot killed another bot.
+
+//BelovedKilled - Another bot killed a bot that this bot is emotionally attached to.
+
+//Hatred - Another bot exceeded the value set for "hatelevel" (above), so this bot has decided to go after them.
+
+//KilledHatedOne - This bot went into "hate" mode, and managed to kill the bot it was angry at.
+
+//KilledOnPurposeByLove - A bot that this bot is emotionally attached to is not emotionally attached to this
+//bot, and this bot was killed by said bot.
+
+//LovedOneKilledLovedOne - This bot is emotionally attached to more than one bot. However, those bots are not
+//emotionally attached to each other, and one of them killed the other.
+
+//GeneralGreetings - This bot just joined the game, and greets the other players.
+
+//ResponseGreetings - This bot responds to a greeting from another bot joining the game.
+
+//OrderAccepted - This bot accepts a team command from the player (note: team commands are disabled in the menu..)
+
+BEGIN_CHAT_GROUPS
+
+Died
+{
+	I was killed by %s!
+}
+
+Killed
+{
+	I killed %s!
+}
+
+BelovedKilled
+{
+	No! %s killed Kyle!
+}
+
+Hatred
+{
+	You have defiled me one too many times, %s. You will pay.
+}
+
+KilledHatedOne
+{
+	Do not enrage me again, %s.
+}
+
+KilledOnPurposeByLove
+{
+	%s.. I love you. Why do you betray me?
+}
+
+LovedOneKilledLovedOne
+{
+	%s, please don't hurt %a!
+}
+
+GeneralGreetings
+{
+	Hello.
+	Hello everyone.
+}
+
+ResponseGreetings
+{
+	Hey %s.
+	Hi %s.
+}
+
+OrderAccepted
+{
+	Yes sir.
+	Hai!
+	As you wish, %s.
+	Yes, %s.
+}

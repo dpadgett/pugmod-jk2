@@ -1,0 +1,19 @@
+{
+//In-game name of the bot (in this case, his name will just be "Example")
+name		"Example"
+
+//In-game model of the bot (we're using the kyle model)
+model		kyle
+
+//The bot's saber color. This can be within the same range of the player's color1 value.
+//0 - red
+//1 - orange
+//2 - yellow
+//3 - green
+//4 - blue
+//5 - purple
+color1		0
+
+//The actual personality file to use for this bot. We will use our example jkb file.
+personality	/botfiles/example.jkb
+}

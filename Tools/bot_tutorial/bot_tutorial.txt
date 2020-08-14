@@ -1,0 +1,22 @@
+Title:			Bot creation tutorial
+Author:			Rich Whitehouse
+Date:			5-20-02
+---------------------------------------------
+Included with this tutorial are two files, example.bot and example.jkb.
+example.bot defines our bot for the game menus. example.jkb is referenced
+by the entry in example.bot, so that once we add our example bot in the
+game he will use the personality and properties in that jkb file. A ".bot"
+file can be named anything, though it's probably preferrable to name it
+the same as the jkb file. All bot files should go in the base/scripts
+folder, and all jkb files should go in the base/botfiles folder.
+
+In the example.bot file included, there is a sample entry for the "Example"
+bot. It contains entries for name, model, color, and which personality file
+to use. Personality files are merely .jkb files, so our example bot entry
+points to the included example.jkb file. Open the .bot file up in notepad
+and take a look at it, each entry is commented and explained there.
+
+In the .jkb file, the bot's actual behavioral properties and chat settings
+are defined. I have commented the included jkb file heavily so it shouldn't
+be hard to figure out what each setting does. You can open .jkb files in
+any plain text editor such as notepad to edit them, as with .bot files.
